@@ -1,0 +1,23 @@
+---
+- name: Download install files
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh
+    dest: "/home/{{ ut_server_user }}/linuxgsm.sh"
+    owner: "{{ ut_server_user }}"
+    group: "{{ ut_server_user }}"
+    mode: '0755'
+
+- name: Check if ut99server exists
+  ansible.builtin.stat:
+    path: "/home/{{ ut_server_user }}/ut99server"
+  register: ut99_server_file
+
+- name: Install linuxgsm.sh
+  when: not ut99_server_file.stat.exists
+  become_user: "{{ ut_server_user }}"
+  ansible.builtin.command: "bash /home/{{ ut_server_user }}/linuxgsm.sh ut99server"
+  changed_when: true
+
+- name: Install ut gameserver if required
+  become_user: "{{ ut_server_user }}"
+  ansible.builtin.command: "bash /home/{{ ut_server_user }}/ut99server auto-install"

@@ -1,0 +1,7 @@
+---
+- name: Setup UT Servers
+  hosts:
+    - server
+  roles:
+    - role: base
+    - role: ut99

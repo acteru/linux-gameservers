@@ -1,0 +1,6 @@
+---
+- name: Setup user for ut
+  ansible.builtin.import_tasks: user.yml
+
+- name: Download setup
+  ansible.builtin.import_tasks: install.yml

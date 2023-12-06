@@ -1,0 +1,2 @@
+---
+base_required_packages: [wget,jq,bc,bzip2,epel-release,glibc.i686,libstdc++.i686,nmap-ncat,tar,tmux,unzip,vim,tree]

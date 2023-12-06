@@ -1,0 +1,16 @@
+---
+- name: Open udp ports for ut server
+  ansible.posix.firewalld:
+    port: 7777-7786/udp
+    permanent: true
+    immediate: true
+    state: enabled
+    zone: public
+
+- name: Open tcp ports for ut web server
+  ansible.posix.firewalld:
+    port: 0876/tcp
+    permanent: true
+    immediate: true
+    state: enabled
+    zone: public

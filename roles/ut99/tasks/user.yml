@@ -1,0 +1,11 @@
+---
+
+- name: Create ut group
+  ansible.builtin.group:
+    name: "{{ ut_server_user }}"
+    state: present
+
+- name: Create ut user
+  ansible.builtin.user:
+    name: "{{ ut_server_user }}"
+    shell: /bin/bash
