@@ -1,0 +1,5 @@
+---
+
+- name: ut-restart
+  ansible.builtin.commando: "/bin/bash /home/{{ ut_server_user }}/ut99server restart"
+  become_user: "{{ ut_server_user }}"

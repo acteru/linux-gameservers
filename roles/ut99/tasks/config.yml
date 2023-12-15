@@ -1,3 +1,9 @@
 ---
-
-# Template server configuration
+- name: Server config
+  ansible.builtin.template:
+    src: ut99server.ini.tmp.j2
+    dest: "/home/{{ ut_server_user }}/serverfiles/System64/ut99server.ini"
+    owner: "{{ ut_server_user }}"
+    group: "{{ ut_server_user }}"
+    mode: '0644'
+  notify: ut-restart

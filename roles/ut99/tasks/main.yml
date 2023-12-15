@@ -1,6 +1,9 @@
 ---
-- name: Setup user for ut
-  ansible.builtin.import_tasks: user.yml
+# - name: Setup user for ut
+#   ansible.builtin.import_tasks: user.yml
 
-- name: Download setup
-  ansible.builtin.import_tasks: install.yml
+# - name: Download setup
+#   ansible.builtin.import_tasks: install.yml
+
+- name: Game server configuration
+  ansible.builtin.import_tasks: config.yml

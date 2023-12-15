@@ -1,2 +1,6 @@
 ---
 ut_server_user: "ut99server"
+ut_server_game_password: ""
+ut_server_console_admin_password: "admin"
+ut_server_web_ui_user: "admin"
+ut_server_web_ui_password: "admin"
