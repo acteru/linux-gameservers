@@ -1,0 +1,16 @@
+---
+
+- name: Install epel-release
+  ansible.builtin.package:
+    name: epel-release
+    state: present
+
+- name: Enable CRB repository for rocky
+  command:
+    cmd: dnf config-manager --enable crb
+  when: ansible_distribution == "Rocky" and ansible_distribution_major_version|int > 8
+
+- name: Install wine
+  ansible.builtin.package:
+    name: wine
+    state: present

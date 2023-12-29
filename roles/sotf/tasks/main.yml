@@ -1,0 +1,7 @@
+---
+
+- name: Wine installation
+  ansible.builtin.import_tasks: wine.yml
+
+- name: Game server configuration
+  ansible.builtin.import_tasks: config.yml

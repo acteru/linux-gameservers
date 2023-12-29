@@ -1,0 +1,15 @@
+---
+
+- name: Create config folder
+  ansible.built.file:
+    path: "/home/{{ sotf_server_user }}/config"
+    state: directory
+    mode: '0775'
+
+- name: Dedicated server config
+  ansible.builtin.template:
+    src: dedicatedserver.cfg.j2
+    dest: "/home/{{ sotf_server_user }}/config/dedicatedserver.cfg"
+    owner: "{{ sotf_server_user }}"
+    group: "{{ soft_server_user }}"
+    mode: '0644'
