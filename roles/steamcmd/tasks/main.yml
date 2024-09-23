@@ -1,1 +1,35 @@
 ---
+- name: Steamcmd package installation
+  ansible.builtin.package:
+    name: "{{ steamcmd_packages }}"
+    state: present
+
+- name: Create steam user
+  ansible.builtin.user:
+    name: steam
+    shell: /bin/bash
+
+- name: Create directory for SteamCMD app
+  ansible.builtin.file:
+    path: "{{ steamcmd_directory }}"
+    state: directory
+    recurse: true
+
+- name: Check steam is already where it should be
+  ansible.builtin.stat:
+    path: "{{ steamcmd_directory }}/steamcmd.sh"
+  register: stat_steamcmd_result
+
+- name: Download SteamCMD for Linux
+  ansible.builtin.get_url:
+    url: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+    dest: "{{ steamcmd_directory }}steamcmd_linux.tar.gz"
+    mode: '0644'
+  when: stat_steamcmd_result.stat.exists == False
+
+- name: Extract the contents to cmd directory
+  ansible.builtin.unarchive:
+    src: "{{ steamcmd_directory }}steamcmd_linux.tar.gz"
+    dest: "{{ steamcmd_directory }}"
+    copy: False
+  when: stat_steamcmd_result.stat.exists == False

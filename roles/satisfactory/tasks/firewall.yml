@@ -1,0 +1,16 @@
+---
+- name: Open udp ports for satisfactory server
+  ansible.posix.firewalld:
+    port: 7777/udp
+    permanent: true
+    immediate: true
+    state: enabled
+    zone: public
+
+- name: Open udp ports for satisfactory server
+  ansible.posix.firewalld:
+    port: 7777/tcp
+    permanent: true
+    immediate: true
+    state: enabled
+    zone: public

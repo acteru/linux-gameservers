@@ -1,13 +1,16 @@
 # Ansible-Roles for various games servers
 
+Install gameserver to play with your friends on a root-server and enjoy.
+
 ## Roles
-- Base
+- base
 - ut99 (Unreal Tournament 99)
 - sotf (Sons of the Forest)
-- pal (Palword)
+- satisfactory
 
 ## Requirements
-- Rocky Linux 9 vm
+- Rocky Linux 9
+- Alma Linux 9
 
 ## Quick start
 1. Add the servers to your inventory
@@ -18,5 +21,5 @@ vim inventories/default
 2. Select the role you need and start the play
 
 ```bash
-ansible-playbook plays/site.yml
+ansible-playbook plays/<game_you_want>.yml
 ```

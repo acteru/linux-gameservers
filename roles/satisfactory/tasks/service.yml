@@ -1,0 +1,26 @@
+---
+- name: Setup satisfactory group
+  ansible.builtin.group:
+    name: "{{ satisfactory_group }}"
+
+- name: Setup satisfactory user
+  ansible.builtin.user:
+    name: "{{ satisfactory_user }}"
+    group: "{{ satisfactory_group }}"
+    shell: /bin/bash
+    create_home: true
+
+- name: Setup satisfactory service
+  ansible.builtin.template:
+    src: satisfactory.service.j2
+    dest: /etc/systemd/system/satisfactory.service
+    owner: "{{ satisfactory_user }}"
+    group: "{{ satisfactory_group }}"
+    mode: '0644'
+  notify:
+    - systemd-daemon-reload
+
+- name: Ensure satisfactory is running
+  ansible.builtin.service:
+    name: satisfactory.service
+    state: started

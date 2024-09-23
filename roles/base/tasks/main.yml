@@ -2,5 +2,5 @@
 - name: Package installation
   ansible.builtin.import_tasks: packages.yml
 
-- name: Open required firewall ports
-  ansible.builtin.import_tasks: firewall.yml
+- name: Service
+  ansible.builtin.import_tasks: service.yml

@@ -1,0 +1,6 @@
+---
+- name: Template satisfactory service
+  ansible.builtin.import_tasks: service.yml
+
+- name: Game server configuration
+  ansible.builtin.import_tasks: firewall.yml

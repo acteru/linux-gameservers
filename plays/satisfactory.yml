@@ -1,0 +1,8 @@
+---
+- name: Setup Satisfactory Servers
+  hosts:
+    - server
+  roles:
+    - role: base
+    - role: steamcmd
+    - role: satisfactory
